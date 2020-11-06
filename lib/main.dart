@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     crossAxisCount:
                         (orientation == Orientation.portrait) ? 5 : 8),
                 itemBuilder: (BuildContext context, int index) {
-                  return MiBaldosa(text: _text);
+                  return MiBaldosa(text: _text, index: index);
                 },
               ),
             )
@@ -97,16 +97,19 @@ class MiBaldosa extends StatelessWidget {
   const MiBaldosa({
     Key key,
     @required List<String> text,
+    @required int index,
   })  : _text = text,
+        _index = index,
         super(key: key);
 
   final List<String> _text;
+  final int _index;
 
   @override
   Widget build(BuildContext context) {
     return Card(
         child: Center(
-      child: Text(_text[index]), //just for testing, will fill with image later
+      child: Text(_text[_index]), //just for testing, will fill with image later
     ));
   }
 }
