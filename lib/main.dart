@@ -81,22 +81,32 @@ class _MyHomePageState extends State<MyHomePage> {
                     crossAxisCount:
                         (orientation == Orientation.portrait) ? 5 : 8),
                 itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                      child: Center(
-                    child: Text(_text[
-                        index]), //just for testing, will fill with image later
-                  ));
+                  return MiBaldosa(text: _text);
                 },
               ),
             )
           ],
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: (() => _incrementCounter()),
-      //   tooltip: 'Increment',
-      //   child: Icon(Icons.add),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
+      // akes auto-formatting nicer for build methods.
     );
+  }
+}
+
+class MiBaldosa extends StatelessWidget {
+  const MiBaldosa({
+    Key key,
+    @required List<String> text,
+  })  : _text = text,
+        super(key: key);
+
+  final List<String> _text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        child: Center(
+      child: Text(_text[index]), //just for testing, will fill with image later
+    ));
   }
 }
