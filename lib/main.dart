@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
         var txt = '$_counter';
         txt = _counter % 3 == 0 ? "face" : txt;
         txt = _counter % 5 == 0 ? "book" : txt;
-        txt = _counter % 15 == 0 ? "facebokk" : txt;
+        txt = _counter % 15 == 0 ? "facebook" : txt;
         _text.add(txt);
       }
       if (delta < 0 && _counter > 0) {
@@ -62,24 +62,18 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               RaisedButton(
-                onPressed: (() => _incrementCounter(1)),
-                child: Text('+1'),
-              ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headline4,
-              ),
+                  onPressed: (() => _incrementCounter(1)), child: Text('+1')),
+              Text('   $_counter   ',
+                  style: Theme.of(context).textTheme.headline4),
               RaisedButton(
-                onPressed: (() => _incrementCounter(-1)),
-                child: Text('-1'),
-              ),
+                  onPressed: (() => _incrementCounter(-1)), child: Text('-1')),
             ]),
             Expanded(
               child: GridView.builder(
                 itemCount: _text.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount:
-                        (orientation == Orientation.portrait) ? 5 : 8),
+                        (orientation == Orientation.portrait) ? 4 : 8),
                 itemBuilder: (BuildContext context, int index) {
                   return MiBaldosa(text: _text, index: index);
                 },
@@ -88,7 +82,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      // akes auto-formatting nicer for build methods.
     );
   }
 }
@@ -108,8 +101,10 @@ class MiBaldosa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        child: Center(
-      child: Text(_text[_index]), //just for testing, will fill with image later
-    ));
+      color: Colors.pink[(_index % 9) * 100],
+      child: Center(
+        child: Text(_text[_index]),
+      ),
+    );
   }
 }
